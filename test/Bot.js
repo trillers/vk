@@ -20,10 +20,10 @@ describe('wenode client test', function(){
                 var bot = botManager.getBot('bot1');
                 bot.syncContacts();
                 bot.syncGroups();
-                bot.broadcastImgToContacts('mediaId');
-                bot.broadcastImgToGroups('mediaId');
-                bot.broadcastTxtToContacts('hello');
-                bot.broadcastTxtToGroups('hello world');
+                bot.broadcastImgToContacts(['bu1', 'bu2'], 'mediaId');
+                bot.broadcastImgToGroups(['g1', 'g2'], 'mediaId');
+                bot.broadcastTxtToContacts(['bu1', 'bu2'], 'hello');
+                bot.broadcastTxtToGroups(['g1', 'g2'], 'hello world');
                 bot.sendTxtToContact('bu_test', 'hello');
                 bot.sendTxtToGroup('group1', 'world');
                 bot.sendImgToContact('bu_test', 'mediaId');
