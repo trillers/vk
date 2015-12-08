@@ -16,6 +16,10 @@ describe('wenode client test', function(){
                 assert.ok(action);
                 console.log(action);
             })
+            botBroker.onClientCommand(function(err, command){
+                assert.ok(command);
+                console.log(command);
+            })
             botManagerPromise.then(function(botManager){
                 var bot = botManager.getBot('bot1');
                 bot.syncContacts();
@@ -29,6 +33,9 @@ describe('wenode client test', function(){
                 bot.sendImgToContact('bu_test', 'mediaId');
                 bot.sendImgToGroup('group1', 'mediaId');
                 bot.profileRequest();
+                bot.start();
+                bot.stop();
+                bot.reload();
                 setTimeout(function(){
                     done();
                 }, 3000);
