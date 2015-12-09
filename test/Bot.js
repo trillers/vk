@@ -42,13 +42,27 @@ describe('wenode client test', function(){
             })
         });
     });
-
+    var ar = [],
+        vcBotBroker = null,
+        vkBroker = null;
     before(function(done){
-
-    })
-    it.only('receive client action in event', function(done){
-
-        
+        ar.push(BrokerFactory.create(open, {bot: true}));
+        ar.push(BotManagerFactory.create(open));
+        Promise.all(ar).then(function(arr){
+            vcBotBroker = arr[0].getBot();
+            vkBroker = arr[1].getBot('agent1');
+            done();
+        })
+    });
+    it('receive client action in event', function(done){
+        vkBroker.onClientActionIn(function(err, data){
+            console.log(data);
+            assert.equal(data.foo, 'bar');
+            done()
+        });
+        vcBotBroker.clientActionIn({
+            foo: 'bar'
+        }, 'agent1')
     })
 });
 
