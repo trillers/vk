@@ -17,20 +17,20 @@ describe.only('vk funcs', function(){
     afterEach(function(){
         api.offClientActionIn();
     });
-    /**
-     * commands
-     */
+    ///**
+    // * commands
+    // */
     it('#start, intent to register and login', function(done){
         console.log('begin');
         api.onClientActionIn(function(err, data){
-            assert.equal('need-login', data.Action);
+            assert.equal('login', data.Action);
             assert.equal('agent1', data.AgentId);
             console.log(data);
             done();
         });
         api.start({intention: 'login', mode: 'trusted', nickname: '祺天大剩', sex: 0, region: '中国 天津'});
     });
-
+    
     /**
      * passive events
      */
@@ -126,10 +126,13 @@ describe.only('vk funcs', function(){
         }, 3000)
     });
     it('#restart', function(done){
-        api.restart();
+        setTimeout(function(){
+            api.restart();
+        }, 55000);
+
         setTimeout(function(){
             done();
-        }, 3000)
+        }, 60000)
     });
 });
 
