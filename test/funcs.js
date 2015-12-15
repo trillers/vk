@@ -30,7 +30,7 @@ describe.only('vk funcs', function(){
         });
         api.start({intention: 'login', mode: 'trusted', nickname: '祺天大剩', sex: 0, region: '中国 天津'});
     });
-    
+
     /**
      * passive events
      */
