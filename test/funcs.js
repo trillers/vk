@@ -135,7 +135,3 @@ describe.only('vk funcs', function(){
     //    }, 60000)
     //});
 });
-
-
-
-
