@@ -17,9 +17,9 @@ describe.only('vk funcs', function(){
     afterEach(function(){
         api.offClientActionIn();
     });
-    ///**
-    // * commands
-    // */
+    /**
+     * commands
+     */
     it('#start, intent to register and login', function(done){
         console.log('begin');
         api.onClientActionIn(function(err, data){
@@ -28,7 +28,8 @@ describe.only('vk funcs', function(){
             //console.log(data);
             done();
         });
-        api.start({intention: 'login', mode: 'trusted', nickname: '祺天大剩', sex: 0, region: '中国 天津'});
+        //api.stop();
+        api.start({intention: 'login', mode: 'untrusted', nickname: '酒剑仙', sex: 0, region: '中国 天津'});
     });
 
     /**
@@ -47,91 +48,100 @@ describe.only('vk funcs', function(){
     /**
      * active events
      */
-    it('#request profile ', function(done){
-        api.onClientActionIn(function(err, data){
-            assert.equal('profile-request', data.Action);
-            console.log(data);
-            done();
-        });
-        api.profileRequest('独自等待');
-    });
-    it('#group list', function(done){
-        api.onClientActionIn(function(err, data){
-            assert.equal('sync-groups', data.Action);
-            console.log(data);
-            done();
-        });
-        api.syncGroups();
-    });
-    //it('#contact list', function(done){
+    //it('#request profile ', function(done){
     //    api.onClientActionIn(function(err, data){
-    //        assert.equal('remark-contact', data.Action);
+    //        assert.equal('profile-request', data.Action);
     //        console.log(data);
     //        done();
     //    });
-    //    api.syncContacts();
+    //    api.profileRequest('独自等待');
     //});
-    it('#send txt to a group', function(done){
-        api.sendTxtToContact('独自等待', '单条个人文本消息');
+    //it('#group list', function(done){
+    //    api.onClientActionIn(function(err, data){
+    //        assert.equal('sync-groups', data.Action);
+    //        console.log(data);
+    //        done();
+    //    });
+    //    api.syncGroups();
+    //});
+    it('#contact list', function(done){
         setTimeout(function(){
-            done();
-        }, 2000);
-    });
-    it('#send a image to a contact', function(done){
-        api.sendImgToContact('独自等待', '/Users/bjhl/dev/codebase/vb/public/geek.png');
-        setTimeout(function(){
-            done();
-        }, 2000);
-    });
-    it('#send txt to a group', function(done){
-        api.sendTxtToGroup('外挂者', '单条群文本消息');
-        setTimeout(function(){
-            done();
-        }, 2000);
-    });
-    it('#send image to a group', function(done){
-        api.sendImgToGroup('外挂者', '/Users/bjhl/dev/codebase/vb/public/geek.png');
-        setTimeout(function(){
-            done();
-        }, 2000);
-    });
-    it('#send a txt to contacts', function(done){
-        api.broadcastTxtToContacts(['独自等待', '独自等待'], '群发个人消息');
-        setTimeout(function(){
-            done();
-        }, 2000);
-    });
-    it('#send a txt to a group', function(done){
-        api.broadcastImgToContacts(['独自等待', '独自等待'], '/Users/bjhl/dev/codebase/vb/public/geek.png');
-        setTimeout(function(){
-            done();
-        }, 2000);
-    });
-    it('#send a txt to a group', function(done){
-        api.broadcastTxtToGroups(['外挂者', '外挂者'], '群发群消息');
-        setTimeout(function(){
-            done();
-        }, 2000);
-    });
-    it('#send a image to groups', function(done){
-        api.broadcastImgToGroups(['外挂者', '外挂者'], '/Users/bjhl/dev/codebase/vb/public/geek.png');
-        setTimeout(function(){
-            done();
-        }, 2000);
-    });
-    it('#restart', function(done){
-        setTimeout(function(){
-            api.restart();
-        }, 55000);
+            api.onClientActionIn(function(err, data){
+                //assert.equal('remark-contact', data.Action);
+                console.log(data);
+                //done();
+            });
+            api.syncContacts();
+        }, 65*1000)
 
-        setTimeout(function(){
-            done();
-        }, 20000)
     });
-    it('#stop', function(done){
-        api.stop();
-        setTimeout(function(){
-            done()
-        }, 3000)
-    });
+    //it('#send txt to a group', function(done){
+    //    api.sendTxtToContact('独自等待', '单条个人文本消息');
+    //    setTimeout(function(){
+    //        done();
+    //    }, 2000);
+    //});
+    //it('#send a image to a contact', function(done){
+    //    api.sendImgToContact('独自等待', '/Users/bjhl/dev/codebase/vb/public/geek.png');
+    //    setTimeout(function(){
+    //        done();
+    //    }, 2000);
+    //});
+    //it('#send txt to a group', function(done){
+    //    api.sendTxtToGroup('外挂者', '单条群文本消息');
+    //    setTimeout(function(){
+    //        done();
+    //    }, 2000);
+    //});
+    //it('#send image to a group', function(done){
+    //    api.sendImgToGroup('外挂者', '/Users/bjhl/dev/codebase/vb/public/geek.png');
+    //    setTimeout(function(){
+    //        done();
+    //    }, 2000);
+    //});
+    //it('#send a txt to contacts', function(done){
+    //    //api.broadcastTxtToContacts(['旅游君', '独自等待', '包三哥1'], '群发个人消息');
+    //    setTimeout(function(){
+    //        api.restart();
+    //    }, 10000)
+    //    api.onAgentStatusChange(function(err, data){
+    //        //assert.equal('login', data.Action);
+    //        //assert.equal('agent1', data.AgentId);
+    //        console.log(data);
+    //        //done();
+    //    });
+    //});
+    //it('#send a txt to a group', function(done){
+    //    api.broadcastImgToContacts(['独自等待', '独自等待'], '/Users/bjhl/dev/codebase/vb/public/geek.png');
+    //    setTimeout(function(){
+    //        done();
+    //    }, 2000);
+    //});
+    //it('#send a txt to a group', function(done){
+    //    api.broadcastTxtToGroups(['外挂者', '外挂者'], '群发群消息');
+    //    setTimeout(function(){
+    //        done();
+    //    }, 2000);
+    //});
+    //it('#send a image to groups', function(done){
+    //    api.broadcastImgToGroups(['外挂者', '外挂者'], '/Users/bjhl/dev/codebase/vb/public/geek.png');
+    //    setTimeout(function(){
+    //        done();
+    //    }, 2000);
+    //});
+    //it('#restart', function(done){
+    //    setTimeout(function(){
+    //        api.restart();
+    //    }, 55000);
+    //
+    //    setTimeout(function(){
+    //        done();
+    //    }, 20000)
+    //});
+    //it('#stop', function(done){
+    //    api.stop();
+    //    setTimeout(function(){
+    //        done()
+    //    }, 3000)
+    //});
 });
