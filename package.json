@@ -1,5 +1,5 @@
 {
-  "name": "vk",
+  "name": "@private/vk",
   "version": "0.0.1-SNAPSHOT",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "repository": "https://github.com/trillers/vk",
   "license": "",
   "dependencies": {
-    "base-settings":  "git+https://henryleu:c148960791ab761064ecfbb07b7fdf582ff008df@github.com/trillers/base-settings.git",
+    "@private/base-settings":  "git+https://henryleu:c148960791ab761064ecfbb07b7fdf582ff008df@github.com/trillers/base-settings.git",
     "vc": "git+https://henryleu:c148960791ab761064ecfbb07b7fdf582ff008df@github.com/trillers/vc.git",
     "amqplib": "0.4.0",
     "log4js": "0.6.26"
